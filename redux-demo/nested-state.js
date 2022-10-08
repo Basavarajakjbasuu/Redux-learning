@@ -1,5 +1,15 @@
 const redux = require('redux')
+// immer - help to manage nested-object
 const produce = require('immer').produce
+
+const applayMiddleWare = redux.applyMiddleware
+
+// Middleware - extend Redux with custome functionality
+//            - it is a third-party extension
+//  Ex-redux-logger ==> add login details
+
+const reduxLogger = require('redux-logger')
+const logger = reduxLogger.createLogger()
 
 const intialState = {
   name: 'Basavaraj',
@@ -41,11 +51,11 @@ const reducer = (state = intialState, action) => {
 }
 
 // create store
-const store = redux.createStore(reducer)
+const store = redux.createStore(reducer, applayMiddleWare(logger))
 console.log('intial state', store.getState());
 
 const unSubscribe = store.subscribe(() => {
-  console.log('Updated state', store.getState());
+  // console.log('Updated state', store.getState());
 })
 
 store.dispatch(updateStreet('#79 Sham Sharan negi colony'))
