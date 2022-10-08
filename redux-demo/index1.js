@@ -46,7 +46,7 @@ const iceCreameIntialState = {
   numOfIceCream: 20
 }
 // Reducer = (previosState, action)
-
+// Multiple Reducer
 const cakeReducer = (state = cakeIntialState, action) => {
   switch (action.type) {
     case CAKE_ORDER:
@@ -80,6 +80,7 @@ const iceCreamReducer = (state = iceCreameIntialState, action) => {
 			return state;
 	}
 };
+
 // Redux store
 const rootReducer = combineReducers({
   cake: cakeReducer,
